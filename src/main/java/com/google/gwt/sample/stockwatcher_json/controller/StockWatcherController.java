@@ -21,14 +21,14 @@ public class StockWatcherController
 	private JsonStockDataService jsonStockDataService;
 	private JsonRandomizeService jsonRandomizeService;
 
-	@RequestMapping(value = "**/" + JSON_STOCK_PRICES, method = RequestMethod.GET)
+	@RequestMapping(value = "**/" + JSON_STOCK_PRICES, method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public List<StockDataDto> getStocks(@RequestParam("q") String rawSymbols)
 	{
 		return this.jsonStockDataService.getStockDataFromSymboles(rawSymbols);
 	}
 
-	@RequestMapping(value = "**/" + JSON_RANDOMIZE, method = RequestMethod.GET)
+	@RequestMapping(value = "**/" + JSON_RANDOMIZE, method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public Integer randomize()
 	{

@@ -21,7 +21,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
   
-  <!-- SpringRPCDispatcherServlet servlet mapping -->
+  <!-- Spring MVC Servlet mapping -->
   <servlet-mapping>
     <servlet-name>springMVCServlet</servlet-name>
     <url-pattern>*.json</url-pattern>
