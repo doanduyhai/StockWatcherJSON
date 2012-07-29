@@ -15,48 +15,21 @@
 	
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
 	
-	<bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
-			<property name="supportedMediaTypes">
-				<list>
-					<value>text/plain;charset=UTF-8</value>
-					<value>*/*</value>
-				</list>
-			</property>
-			<property name="writeAcceptCharset" value="false"/>
-	</bean>
-	<bean id="defaultMessageConverters" class="java.util.ArrayList">
+	<bean id="jacksonMessageConverter" class="java.util.ArrayList">
 		<constructor-arg>
 	        <list>
-	        	<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
-	        	<ref bean="stringHttpMessageConverter"/>
-				<bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
-	        	<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
 	        	<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
 	        </list>
 	    </constructor-arg>   
 	</bean>
 	 
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >
-		<property name="messageConverters" ref="defaultMessageConverters"/>
+		<property name="messageConverters" ref="jacksonMessageConverter"/>
 	</bean>
 		  	 	  	
 	<bean id="stockWatcherController" class="com.google.gwt.sample.stockwatcher_json.controller.StockWatcherController" >
 		<property name="jsonStockDataService" ref="jsonStockDataService"/>
 		<property name="jsonRandomizeService" ref="jsonRandomizeService"/>
-	</bean>
-
-				
-	<bean id="contentNegotiatingResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-		<property name="order" value="#{T(org.springframework.core.Ordered).HIGHEST_PRECEDENCE}" />
-		<property name="mediaTypes">
-			<map>
-				<entry key="html" value="text/html"/>
-				<entry key="pdf" value="application/pdf"/>
-				<entry key="xsl" value="application/vnd.ms-excel"/>
-				<entry key="xml" value="application/xml"/>
-				<entry key="json" value="application/json"/>
-			</map>
-		</property>
 	</bean>
 	
 </beans>

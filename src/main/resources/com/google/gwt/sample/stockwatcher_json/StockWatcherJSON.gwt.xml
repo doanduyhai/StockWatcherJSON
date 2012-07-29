@@ -8,8 +8,6 @@
 <module rename-to="StockwatcherJSON">
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
-  <inherits name="com.google.gwt.logging.Logging"/>
-  
  
   <!-- Inherit the default GWT style sheet.  You can change       -->
   <!-- the theme of your GWT application by uncommenting          -->
@@ -21,8 +19,6 @@
 
   <!-- Other module inherits                                      -->
   <inherits name="com.google.gwt.http.HTTP" />
-  
-  <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
   
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.google.gwt.sample.stockwatcher_json.client.StockWatcherJSON'/>
